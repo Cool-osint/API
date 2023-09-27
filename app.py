@@ -4,10 +4,6 @@ import requests
 from tools.num_scripts import *
 app = Flask(__name__)
 
-banner = """
-# Your banner here
-"""
-
 # Create a dictionary to map service names to functions
 services = {
     "swiggy": check_swiggy,
@@ -52,5 +48,8 @@ def check_services():
         return jsonify({"error": "Invalid input. Please provide a valid phone number or email address."}), 400
 
 if __name__ == "__main__":
-    print(banner)  # Print the ASCII banner
-    app.run()
+    app.run(
+        host="0.0.0.0",
+        port=5000,
+        debug=True
+    )
